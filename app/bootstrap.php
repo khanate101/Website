@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+$autoload = dirname(__DIR__) . '/vendor/autoload.php';
+if (is_file($autoload)) {
+    require_once $autoload;
+}
+
 date_default_timezone_set(getenv('APP_TIMEZONE') ?: 'Asia/Riyadh');
 
 function load_env_file(string $file): void {
