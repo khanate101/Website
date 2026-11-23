@@ -15,7 +15,8 @@ function load_env_file(string $file): void {
         if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) continue;
         [$key, $value] = explode('=', $line, 2);
         $key = trim($key); $value = trim(trim($value), '"\'');
-        if ($key !== '' && getenv($key) === false) putenv($key . '=' . $value);
+        $existing = $key !== '' ? getenv($key) : false;
+        if ($key !== '' && ($existing === false || $existing === '')) putenv($key . '=' . $value);
     }
 }
 load_env_file(dirname(__DIR__) . '/.env');
