@@ -23,9 +23,14 @@ try {
         exit('هذه الصفحة لم تعد متاحة.');
     }
 } catch (Throwable $e) {
-    error_log('First admin page database check: ' . $e->getMessage());
+    error_log('First admin page database check: ' . get_class($e) . ' ' . $e->getMessage());
+    $safe = get_class($e);
+    if ($e instanceof PDOException && isset($e->errorInfo[0])) {
+        $safe .= ' | SQLSTATE=' . $e->errorInfo[0];
+        if (isset($e->errorInfo[1])) $safe .= ' | DRIVER_CODE=' . (int)$e->errorInfo[1];
+    }
     http_response_code(503);
-    exit('تعذر الاتصال بقاعدة البيانات. راجع إعدادات الاتصال أولاً.');
+    exit('تعذر الاتصال بقاعدة البيانات. رمز التشخيص: ' . htmlspecialchars($safe, ENT_QUOTES, 'UTF-8') . '. أرسل لي هذا الرمز فقط.');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
