@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);require dirname(__DIR__).'/app/bootstrap.php';
+declare(strict_types=1);require dirname(__DIR__).'/app/bootstrap.php'; require dirname(__DIR__).'/vendor/autoload.php';
 $_SESSION['cart']=$_SESSION['cart']??[];$notice='';
 if($_SERVER['REQUEST_METHOD']==='POST'){
  if(!hash_equals($_SESSION['_csrf']??'',(string)($_POST['_csrf']??''))){http_response_code(419);exit('انتهت صلاحية الطلب.');}
