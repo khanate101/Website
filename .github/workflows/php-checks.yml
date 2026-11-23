@@ -25,3 +25,39 @@ jobs:
       - name: Run smoke tests
         if: hashFiles('tests/smoke.php') != ''
         run: php tests/smoke.php
+
+  mysql-integration:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_NAME: alfakhamah
+      DB_USER: root
+      DB_PASS: root
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: pdo_mysql, mbstring, fileinfo
+          coverage: none
+      - name: Install MySQL client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+      - name: Create schema
+        run: mysql --host=127.0.0.1 --user=root --password=root < database/schema.sql
+      - name: Seed role permissions
+        run: mysql --host=127.0.0.1 --user=root --password=root alfakhamah < database/permissions.sql
+      - name: Run MySQL integration tests
+        run: php tests/mysql.php
