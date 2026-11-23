@@ -19,7 +19,7 @@ try {
 $storeName = 'الفخامة';
 try { if ($dbReady) { $s = $pdo->query("SELECT setting_value FROM settings WHERE setting_key='store_name'")->fetchColumn(); if ($s) $storeName = $s; } } catch (Throwable) {}
 $cartCount = array_sum(array_map('intval', $_SESSION['cart'] ?? []));
-$csrf = \\App\\Security::csrfToken();
+$csrf = \App\Security::csrfToken();
 ?><!doctype html>
 <html lang="ar" dir="rtl">
 <head>
