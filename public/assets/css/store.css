@@ -67,3 +67,8 @@
  .categories-page-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
  .categories-page-grid .category-card{min-height:145px}
 }
+
+
+/* Match the reference category strip on desktop */
+@media(min-width:901px){.category-grid[data-category-carousel]{grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}}
+@media(max-width:900px) and (min-width:641px){.category-grid[data-category-carousel]{grid-template-columns:repeat(3,minmax(0,1fr))}}
