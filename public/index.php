@@ -36,7 +36,7 @@ $cartCount = (int)($_SESSION['cart_count'] ?? 0);
 <a class="brand" href="./" aria-label="الرئيسية"><span class="brand-mark">ف</span><span><strong>الفخامة</strong><small>AL FAKHAMAH</small></span></a>
 <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">القائمة</button>
 <nav id="main-nav" class="main-nav" aria-label="القائمة الرئيسية"><a class="active" href="./">الرئيسية</a><a href="#categories">الأقسام</a><a href="#products">المنتجات</a><a href="#about">من نحن</a></nav>
-<div class="nav-actions"><a href="#products" class="icon-link" aria-label="بحث">⌕</a><a href="account.php" class="icon-link" aria-label="حسابي">♙</a><a href="cart.php" class="cart-link" aria-label="السلة">السلة <b><?= $cartCount ?></b></a></div>
+<div class="nav-actions"><a href="cart.php" class="cart-link" aria-label="السلة">السلة <b><?= $cartCount ?></b></a></div>
 </div></header>
 <main>
 <section class="hero"><div class="hero-glow"></div><div class="container hero-content"><div class="hero-copy"><span class="eyebrow">مرحباً بكم في</span><h1>الفخامة <em>تبدأ من التفاصيل</em></h1><p>اكتشف تجربة تسوق راقية، بتفاصيل مختارة بعناية وخدمة تليق بك.</p><div class="hero-actions"><a class="btn btn-gold" href="#products">اكتشف المنتجات <span>←</span></a><a class="text-link" href="#categories">تصفح الأقسام</a></div><div class="trust-row"><span>✧ جودة مختارة</span><span>◇ تجربة سهلة</span><span>◈ خدمة موثوقة</span></div></div><div class="hero-art" aria-hidden="true"><div class="gold-orbit"></div><div class="hero-emblem">ف</div><span class="hero-caption">AL FAKHAMAH</span></div></div></section>
