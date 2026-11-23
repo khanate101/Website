@@ -1,4 +1,3 @@
-USE alfakhamah;
 INSERT IGNORE INTO permissions(permission_key,label) VALUES
 ('categories.view','عرض الأقسام'),('categories.manage','إدارة الأقسام'),
 ('products.view','عرض المنتجات'),('products.manage','إدارة المنتجات'),
