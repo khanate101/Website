@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);require dirname(__DIR__).'/app/bootstrap.php';
+declare(strict_types=1);require dirname(__DIR__).'/app/bootstrap.php'; require dirname(__DIR__).'/vendor/autoload.php';
 $_SESSION['cart']=$_SESSION['cart']??[];$_SESSION['checkout_key']=$_SESSION['checkout_key']??bin2hex(random_bytes(32));
 $error='';$success=null;$items=[];$total=0;
 if($_SESSION['cart']){
