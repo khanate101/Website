@@ -180,11 +180,13 @@ CREATE TABLE banners (
  title VARCHAR(220) NOT NULL,
  subtitle VARCHAR(500) NULL,
  image_path VARCHAR(500) NULL,
+ image_alt VARCHAR(220) NULL,
  button_label VARCHAR(80) NULL,
  button_url VARCHAR(500) NULL,
  is_active TINYINT(1) NOT NULL DEFAULT 0,
  sort_order INT NOT NULL DEFAULT 0,
- created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
 CREATE TABLE user_permissions (
@@ -212,4 +214,4 @@ CREATE TABLE audit_logs (
 INSERT INTO roles(name,label) VALUES
  ('super_admin','المدير الرئيسي'),('manager','مدير مساعد'),('staff','موظف');
 INSERT INTO settings(setting_key,setting_value) VALUES
- ('store_name','الفخامة'),('currency','SAR'),('delivery_fee','0'),('phone',''),('whatsapp','');
+ ('store_name','معسلات VIP 27'),('currency','SAR'),('delivery_fee','0'),('phone',''),('whatsapp','');
