@@ -1,9 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use PDO;
-use PDOException;
-
 date_default_timezone_set(getenv('APP_TIMEZONE') ?: 'Asia/Riyadh');
 
 function load_env_file(string $file): void {
