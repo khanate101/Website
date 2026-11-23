@@ -5,8 +5,8 @@ use PDO;
 final class Admin {
  public static function requirePermission(string $key): array {
   $user=Auth::requireUser(); if(($user['role_name']??'')==='super_admin') return $user;
-  $q=db()->prepare("SELECT p.id FROM permissions p JOIN role_permissions rp ON rp.permission_id=p.id LEFT JOIN user_permissions up ON up.permission_id=p.id AND up.user_id=? WHERE p.permission_key=? AND (up.allowed IS NULL OR up.allowed=1) AND rp.role_id=? LIMIT 1");
-  $q->execute([(int)$user['id'],$key,(int)$user['role_id']]); if(!$q->fetchColumn()){http_response_code(403);exit('ليس لديك صلاحية لتنفيذ هذا الإجراء.');} return $user;
+  $q=db()->prepare("SELECT p.id FROM permissions p LEFT JOIN role_permissions rp ON rp.permission_id=p.id AND rp.role_id=? LEFT JOIN user_permissions up ON up.permission_id=p.id AND up.user_id=? WHERE p.permission_key=? AND (up.allowed=1 OR (up.allowed IS NULL AND rp.permission_id IS NOT NULL)) LIMIT 1");
+  $q->execute([(int)$user['role_id'],(int)$user['id'],$key]); if(!$q->fetchColumn()){http_response_code(403);exit('ليس لديك صلاحية لتنفيذ هذا الإجراء.');} return $user;
  }
  public static function audit(string $action,string $type='',?int $id=null,array $details=[]): void {
   $user=Auth::user();$q=db()->prepare("INSERT INTO audit_logs(user_id,action,entity_type,entity_id,ip_address,details) VALUES(?,?,?,?,?,?)");
