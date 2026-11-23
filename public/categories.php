@@ -32,7 +32,7 @@ try{
 <?php if($categories):?>
 <div class="categories-page-grid">
 <?php foreach($categories as $category):?>
-<a class="category-card" href="category.php?slug=<?=rawurlencode($category['slug'])?>">
+<a class="category-card" href="./?category=<?=rawurlencode($category['slug'])?>#products">
 <?php if(!empty($category['image_path'])):?><img class="category-card-image" loading="lazy" src="<?=e($category['image_path'])?>" alt="<?=e($category['name'])?>"><?php else:?><span class="category-all-icon">✦</span><?php endif;?>
 <span class="category-card-caption"><strong><?=e($category['name'])?></strong><small><?= (int)$category['product_count'] ?> منتج · استكشف القسم</small></span>
 </a>
