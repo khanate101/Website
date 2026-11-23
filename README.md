@@ -27,7 +27,8 @@
 ## التثبيت
 
 1. أنشئ قاعدة بيانات ومستخدماً مخصصاً لها في MySQL.
-2. استورد المخطط: `mysql -u DB_USER -p < database/schema.sql`.3. أضف صلاحيات الأدوار: `mysql -u DB_USER -p alfakhamah < database/permissions.sql`.
+2. استورد المخطط: `mysql -u DB_USER -p < database/schema.sql`.
+3. أضف صلاحيات الأدوار: `mysql -u DB_USER -p alfakhamah < database/permissions.sql`.
 4. انسخ `.env.example` إلى `.env`، ثم أدخل بيانات الاتصال الصحيحة.
 5. اضبط `SESSION_SECURE=true` على HTTPS. للاختبار المحلي عبر HTTP فقط، اضبطها مؤقتاً إلى `false`.
 6. نفّذ `composer install --no-dev --optimize-autoloader`.
