@@ -14,10 +14,13 @@ jobs:
           extensions: pdo_mysql, mbstring, fileinfo
           coverage: none
       - name: Validate Composer manifest
+        if: hashFiles('composer.json') != ''
         run: composer validate --no-check-publish
       - name: Install dependencies
+        if: hashFiles('composer.json') != ''
         run: composer install --no-interaction --prefer-dist
       - name: Lint PHP files
+        if: hashFiles('app/**/*.php', 'bin/**/*.php', 'public/**/*.php', 'tests/**/*.php') != ''
         run: find app bin public tests -type f -name "*.php" -print0 | xargs -0 -n1 php -l
       - name: Run smoke tests
         if: hashFiles('tests/smoke.php') != ''
