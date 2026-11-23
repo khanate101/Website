@@ -212,4 +212,4 @@ CREATE TABLE audit_logs (
 INSERT INTO roles(name,label) VALUES
  ('super_admin','المدير الرئيسي'),('manager','مدير مساعد'),('staff','موظف');
 INSERT INTO settings(setting_key,setting_value) VALUES
- ('store_name','الفخامة'),('currency','SAR'),('delivery_fee','0'),('phone',''),('whatsapp','');
+ ('store_name','معسلات VIP 27'),('currency','SAR'),('delivery_fee','0'),('phone',''),('whatsapp','');
